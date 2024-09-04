@@ -20,7 +20,7 @@ public class MultiArrayOperations {
   @Param("100")
   public String vectorsCount = "";
 
-  @Param({"PlainJava", "VectorApi"}) //, "JNI", "JVMCI"})
+  @Param({"PlainJava", "VectorApi", "NativeJni"})
   public String calc = "";
 
   public float[] a;
