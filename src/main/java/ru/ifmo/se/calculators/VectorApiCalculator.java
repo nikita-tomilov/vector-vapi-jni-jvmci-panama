@@ -61,6 +61,42 @@ public class VectorApiCalculator implements Calculator {
     return (sum / a.length);
   }
 
+  @Override
+  public float[] computeAverageVector(final float[][] a) {
+    float m = (float) a.length;
+    int n = a[0].length;
+
+    if (n != a[a.length - 1].length) {
+      throw new IllegalArgumentException("All vectors must have the same length");
+    }
+
+    float[] ans = new float[n];
+    int upperBound = SPECIES.loopBound(n);
+
+    int i = 0;
+    while (i < upperBound) {
+      FloatVector va = FloatVector.fromArray(SPECIES, ans, i);
+      for (final float[] floats : a) {
+        FloatVector vb = FloatVector.fromArray(SPECIES, floats, i);
+        va = va.add(vb);
+      }
+      va = va.div(m);
+      va.intoArray(ans, i);
+      i += SPECIES.length();
+    }
+
+    while (i < ans.length) {
+      ans[i] = 0.0f;
+      for (final float[] floats : a) {
+        ans[i] += floats[i];
+      }
+      ans[i] /= m;
+      i++;
+    }
+
+    return ans;
+  }
+
   private float computeCosineSimilarity(float[] p, float[] q) {
     float dp = 0.0f;
     float sumA = 0.0f;

@@ -44,6 +44,25 @@ public class PlainJavaCalculator implements Calculator {
     return sum / a.length;
   }
 
+  @Override
+  public float[] computeAverageVector(final float[][] a) {
+    int n = a[0].length;
+    float[] ans = new float[n];
+
+    // Cache locality is better this way
+    for (final float[] floats : a) {
+      for (int i = 0; i < n; i++) {
+        ans[i] += floats[i];
+      }
+    }
+
+    for (int i = 0; i < n; i++) {
+      ans[i] /= a.length;
+    }
+
+    return ans;
+  }
+
   private float computeCosineSimilarity(final float[] a, final float[] b) {
     float a2 = 0.0f;
     float b2 = 0.0f;

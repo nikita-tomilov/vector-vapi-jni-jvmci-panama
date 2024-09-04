@@ -14,4 +14,15 @@ public class VectorUtil {
     }
     return vector;
   }
+
+  public static float[][] generateRandomMatrix(final String dimensionParam, final String vectorsCountParam) {
+    int dimension = Integer.parseInt(dimensionParam);
+    int vectorsCount = Integer.parseInt(vectorsCountParam);
+
+    float[][] matrix = new float[vectorsCount][dimension];
+    for (int i = 0; i < vectorsCount; i++) {
+      matrix[i] = generateRandomVector(dimensionParam);
+    }
+    return matrix;
+  }
 }
