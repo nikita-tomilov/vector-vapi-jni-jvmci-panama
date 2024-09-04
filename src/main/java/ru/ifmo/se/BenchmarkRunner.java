@@ -32,7 +32,10 @@ public class BenchmarkRunner {
         .orElse(Mode.SampleTime.name()));
     TimeUnit timeUnit = TimeUnit.valueOf(Optional.ofNullable(getNullableStringProperty("timeUnit"))
         .orElse(TimeUnit.MILLISECONDS.name()));
-    String resultName = mode == Mode.Throughput ? mode + "-" + numThreads + ".csv" : mode + ".csv";
+    String modeSpec = (mode == Mode.Throughput) //
+        ? mode + "-" + numThreads + ".csv" //
+        : mode + ".csv";
+    String resultName = getNullableStringProperty("resultName") + "-" + modeSpec;
     int warmupIterations = Optional.ofNullable(getNullableIntProperty("warmupIterations"))
         .orElse(5);
     int iterations = Optional.ofNullable(getNullableIntProperty("iterations")).orElse(10);
@@ -58,7 +61,6 @@ public class BenchmarkRunner {
       opt = opt.param(entry.getKey(), entry.getValue().toArray(new String[0]));
     }
 
-    String profile = getNullableStringProperty("profile");
     opt = opt
         .forks(1)
         .warmupIterations(warmupIterations)
