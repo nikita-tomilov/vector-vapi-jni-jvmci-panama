@@ -32,15 +32,6 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
         </dependency>
-        <!--
-        mvn install:install-file \
-            -Dfile=nalim.jar \
-            -DgroupId=one.nalim \
-            -DartifactId=nalim \
-            -Dversion=0.1 \
-            -Dpackaging=jar \
-            -DgeneratePom=true
-        -->
         <dependency>
             <groupId>one.nalim</groupId>
             <artifactId>nalim</artifactId>

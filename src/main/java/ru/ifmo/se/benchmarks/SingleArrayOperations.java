@@ -17,7 +17,7 @@ public class SingleArrayOperations {
   @Param("100")
   public String dimension = "";
 
-  @Param({"PlainJava", "VectorApi", "NativeJni"})
+  @Param({"NativeJvmci"})
   public String calc = "";
 
   public float[] a;
