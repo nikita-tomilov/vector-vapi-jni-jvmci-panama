@@ -109,7 +109,7 @@ JNIEXPORT jfloat JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAngularDistanc
     env->GetFloatArrayRegion(p, 0, s, pp);
     env->GetFloatArrayRegion(q, 0, s, qq);
 
-    float result = computeEuclideanDistance(pp, s, qq, s);
+    float result = computeAngularDistance(pp, s, qq, s);
     return result;
 }
 

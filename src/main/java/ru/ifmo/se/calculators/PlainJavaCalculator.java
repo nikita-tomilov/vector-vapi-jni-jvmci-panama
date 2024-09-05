@@ -10,7 +10,6 @@ public class PlainJavaCalculator implements Calculator {
     for (int i = 0; i < a.length; i++) {
       float s = (a[i] - b[i]);
       ans += s * s;
-      i++;
     }
     return (float) sqrt(ans);
   }
