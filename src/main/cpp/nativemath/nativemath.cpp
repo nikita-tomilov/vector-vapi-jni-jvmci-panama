@@ -1,6 +1,7 @@
 #include <cmath>
 #include "ru_ifmo_se_jni_NativeMathJni.h"
 #define UNUSED(x) (void)(x)
+#include <iostream>
 
 float computeEuclideanDistance(const float *p, const float *q, int size) {
     float result = 0;
@@ -55,19 +56,41 @@ float computeAverageValue(const float *p, int size) {
     return avg / size;
 }
 
-void computeAverageVector(const float *p, int size, int dim, float *ans) {
+void computeAverageVector(const float *p, int count, int dim, float *ans) {
     for (int i = 0; i < dim; i++) {
         double sum = 0;
-        for (int j = 0; j < size; j++) {
+        for (int j = 0; j < count; j++) {
             sum += p[j * dim + i];
         }
-        ans[i] = sum / size;
+        ans[i] = sum / count;
     }
 }
 
 extern "C" __attribute__((visibility("default")))
-void computeAverageVectorN(const float *p, int, int size, int dim, float* ans) {
-    computeAverageVector(p, size, dim, ans);
+void computeAverageVectorN(const float *p, int, int count, int dim, float* ans) {
+    computeAverageVector(p, count, dim, ans);
+}
+
+extern "C" __attribute__((visibility("default")))
+long getAddrP(const float* arr) {
+  return reinterpret_cast<long>(arr);
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeAverageVectorP(const long *p, int count, int dim, float* ans) {
+
+    for (int i = 0; i < count; i++) {
+        long addr = p[i];
+        float* arr = reinterpret_cast<float*>(addr);
+
+        for (int j = 0; j < dim; j++) {
+            ans[j] += arr[j];
+        }
+    }
+
+    for (int j = 0; j < dim; j++) {
+        ans[j] = ans[j] / count;
+    }
 }
 
 extern "C" __attribute__((visibility("default")))

@@ -42,7 +42,7 @@ public class MultiArrayOperations {
     blackhole.consume(ans);
   }
 
-  @Benchmark
+  /*@Benchmark
   public void euclidDistances(final Blackhole blackhole) {
     float[] ans = calculator.computeEuclideanDistances(a, b);
     blackhole.consume(ans);
@@ -52,5 +52,5 @@ public class MultiArrayOperations {
   public void angularDistances(final Blackhole blackhole) {
     float[] ans = calculator.computeAngularDistances(a, b);
     blackhole.consume(ans);
-  }
+  }*/
 }

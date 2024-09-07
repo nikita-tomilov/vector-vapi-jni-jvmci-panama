@@ -1,6 +1,5 @@
 package ru.ifmo.se.calculators;
 
-import one.nalim.Link;
 import one.nalim.Linker;
 import ru.ifmo.se.jni.NativeMathJvmci;
 
