@@ -12,5 +12,11 @@ export JAVA_HOME=$JAVA_17_HOME
 #   -DgeneratePom=true
 # rm nalim.jar
 
+sed -i 's!<jvm.version>22</jvm.version>!<jvm.version>17</jvm.version>!' pom.xml
 ./mvnw clean package
 mv $JAR_FILE $BENCH17
+
+export JAVA_HOME=$JAVA_22_HOME
+sed -i 's!<jvm.version>17</jvm.version>!<jvm.version>22</jvm.version>!' pom.xml
+./mvnw clean package
+mv $JAR_FILE $BENCH22

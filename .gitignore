@@ -40,3 +40,4 @@ cmake-build-debug/
 *.dylib
 
 hs_err*.log
+*.jar
