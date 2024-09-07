@@ -5,14 +5,16 @@ java17jvmci \
       -Dmode=AverageTime \
       -DtimeUnit=NANOSECONDS \
       -Dparamdimension=256,384,768 \
-      -DresultName=SingleArrayOperations \
-      -jar $BENCH
+      -Dparamcalc=NativeJvmci \
+      -DresultName=SingleArrayOperations-JVMCI-JDK17 \
+      -jar $BENCH17
 
-#java17jvmci \
-#      -DbenchmarksInclude=MultiArrayOperations \
-#      -Dmode=AverageTime \
-#      -DtimeUnit=NANOSECONDS \
-#      -Dparamdimension=256,384,768 \
-#      -DparamvectorsCount=100,250,500 \
-#      -DresultName=MultiArrayOperations \
-#      -jar $BENCH
+java17jvmci \
+      -DbenchmarksInclude=MultiArrayOperations \
+      -Dmode=AverageTime \
+      -DtimeUnit=MICROSECONDS \
+      -Dparamdimension=256,384,768 \
+      -DparamvectorsCount=100,250,500 \
+      -Dparamcalc=NativeJvmci \
+      -DresultName=MultiArrayOperations-JVMCI-JDK17 \
+      -jar $BENCH17
