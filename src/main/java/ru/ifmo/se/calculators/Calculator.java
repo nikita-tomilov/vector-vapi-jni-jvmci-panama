@@ -15,4 +15,8 @@ public interface Calculator {
   float[] computeEuclideanDistances(float[] a, float[][] b) ;
 
   float[] computeAngularDistances(float[] a, float[][] b);
+
+  float[][] computeEuclideanDistanceMatrix(float[][] a);
+
+  float[][] computeAngularDistanceMatrix(float[][] a);
 }

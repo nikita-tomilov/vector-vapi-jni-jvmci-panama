@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
+import java.util.stream.Collectors;
 
 class CalculatorTest {
 
@@ -37,7 +38,7 @@ class CalculatorTest {
     float[] b = {4.0f, 5.0f, 6.0f};
 
     check(
-        new Input("angular single",a, b),
+        new Input("angular single", a, b),
         (calculator, input) -> calculator.computeAngularDistance(input.a, input.b));
   }
 
@@ -59,23 +60,23 @@ class CalculatorTest {
 
   @Test
   public void averageVectorTest() {
-    float[][] a = {
-        {1.0f, 2.0f, 3.0f},
-        {4.0f, 5.0f, 6.0f},
-        {7.0f, 8.0f, 9.0f}
+    float[][] c = {
+        {1.0f, 2.0f, 3.0f, 4.0f},
+        {4.0f, 5.0f, 6.0f, 7.0f},
+        {7.0f, 8.0f, 9.0f, 10.0f}
     };
     checkArr(
-        new Input("avg vec", null, null, a),
+        new Input("avg vec", null, null, c),
         (calculator, input) -> calculator.computeAverageVector(input.c));
   }
 
   @Test
   public void euclideanMultiTest() {
-    float[] a = {1.0f, 2.0f, 3.0f};
+    float[] a = {1.0f, 2.0f, 3.0f, 4.0f};
     float[][] c = {
-        {1.0f, 2.0f, 3.0f},
-        {4.0f, 5.0f, 6.0f},
-        {7.0f, 8.0f, 9.0f}
+        {1.0f, 2.0f, 3.0f, 4.0f},
+        {4.0f, 5.0f, 6.0f, 7.0f},
+        {7.0f, 8.0f, 9.0f, 10.0f}
     };
     checkArr(
         new Input("euclidean multi", a, null, c),
@@ -84,15 +85,39 @@ class CalculatorTest {
 
   @Test
   public void angularMultiTest() {
-    float[] a = {1.0f, 2.0f, 3.0f};
+    float[] a = {1.0f, 2.0f, 3.0f, 4.0f};
     float[][] c = {
-        {1.0f, 2.0f, 3.0f},
-        {4.0f, 5.0f, 6.0f},
-        {7.0f, 8.0f, 9.0f}
+        {1.0f, 2.0f, 3.0f, 4.0f},
+        {4.0f, 5.0f, 6.0f, 7.0f},
+        {7.0f, 8.0f, 9.0f, 10.0f}
     };
     checkArr(
         new Input("angular multi", a, null, c),
         (calculator, input) -> calculator.computeAngularDistances(input.a, input.c));
+  }
+
+  @Test
+  public void euclideanMatrixTest() {
+    float[][] c = {
+        {1.0f, 2.0f, 3.0f, 4.0f},
+        {4.0f, 5.0f, 6.0f, 7.0f},
+        {7.0f, 8.0f, 9.0f, 10.0f}
+    };
+    checkMat(
+        new Input("euclidean matrix", null, null, c),
+        (calculator, input) -> calculator.computeEuclideanDistanceMatrix(input.c));
+  }
+
+  @Test
+  public void angularMatrixTest() {
+    float[][] c = {
+        {1.0f, 2.0f, 3.0f, 4.0f},
+        {4.0f, 5.0f, 6.0f, 7.0f},
+        {7.0f, 8.0f, 9.0f, 10.0f}
+    };
+    checkMat(
+        new Input("angular matrix", null, null, c),
+        (calculator, input) -> calculator.computeAngularDistanceMatrix(input.c));
   }
 
   private void check(final Input input, final BiFunction<Calculator, Input, Float> invocation) {
@@ -118,6 +143,30 @@ class CalculatorTest {
       Assertions.assertEquals(expected.length, actual.length);
       for (int i = 0; i < expected.length; i++) {
         Assertions.assertEquals(expected[i], actual[i], 1e-6);
+      }
+    }
+  }
+
+  private void checkMat(
+      final Input input,
+      final BiFunction<Calculator, Input, float[][]> invocation
+  ) {
+    final var expected = invocation.apply(plainCalculator, input);
+    System.out.println(input.test + ": " + Arrays.stream(expected) //
+        .map(Arrays::toString) //
+        .collect(Collectors.joining(", ")));
+    for (Calculator calculator : calculators) {
+      final var actual = invocation.apply(calculator, input);
+      System.out.println(" - for calc " + calculator.getClass().getSimpleName() + " got "
+          + Arrays.stream(actual) //
+          .map(Arrays::toString) //
+          .collect(Collectors.joining(", ")));
+      Assertions.assertEquals(expected.length, actual.length);
+      Assertions.assertEquals(expected[0].length, actual[0].length);
+      for (int i = 0; i < expected.length; i++) {
+        for (int j = 0; j < expected[i].length; j++) {
+          Assertions.assertEquals(expected[i][j], actual[i][j], 1e-6);
+        }
       }
     }
   }

@@ -24,4 +24,10 @@ public class NativeMathJvmci {
 
   @Link
   public static native void computeAngularDistanceMultiN(float[] a, int aSize, float[] b, int bSize, float[] ans);
+
+  @Link
+  public static native void computeEuclideanDistanceMatrixN(float[] a, int aSize, int count, int dim, float[] ans);
+
+  @Link
+  public static native void computeAngularDistanceMatrixN(float[] a, int aSize, int count, int dim, float[] ans);
 }

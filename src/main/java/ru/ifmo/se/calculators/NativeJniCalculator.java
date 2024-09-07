@@ -1,7 +1,7 @@
 package ru.ifmo.se.calculators;
 
 import ru.ifmo.se.jni.NativeMathJni;
-import static ru.ifmo.se.util.VectorUtil.flatten;
+import static ru.ifmo.se.util.VectorUtil.*;
 
 public class NativeJniCalculator implements Calculator {
 
@@ -48,5 +48,21 @@ public class NativeJniCalculator implements Calculator {
   public float[] computeAngularDistances(final float[] a, final float[][] b) {
     float[] bb = flatten(b);
     return jni.computeAngularDistanceMulti(a, bb, b.length, a.length);
+  }
+
+  @Override
+  public float[][] computeEuclideanDistanceMatrix(float[][] a) {
+    int n = a.length;
+    float[] aa = flatten(a);
+    float[] ansFlat = jni.computeEuclideanDistanceMatrix(aa, n, a[0].length);
+    return deflatten(ansFlat, n, n);
+  }
+
+  @Override
+  public float[][] computeAngularDistanceMatrix(float[][] a) {
+    int n = a.length;
+    float[] aa = flatten(a);
+    float[] ansFlat = jni.computeAngularDistanceMatrix(aa, n, a[0].length);
+    return deflatten(ansFlat, n, n);
   }
 }

@@ -115,6 +115,36 @@ public class VectorApiCalculator implements Calculator {
     return ans;
   }
 
+  @Override
+  public float[][] computeEuclideanDistanceMatrix(float[][] a) {
+    int n = a.length;
+    float[][] ans = new float[n][n];
+
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < i; j++) {
+        ans[i][j] = computeEuclideanDistance(a[i], a[j]);
+        ans[j][i] = ans[i][j];
+      }
+    }
+
+    return ans;
+  }
+
+  @Override
+  public float[][] computeAngularDistanceMatrix(float[][] a) {
+    int n = a.length;
+    float[][] ans = new float[n][n];
+
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < i; j++) {
+        ans[i][j] = computeAngularDistance(a[i], a[j]);
+        ans[j][i] = ans[i][j];
+      }
+    }
+
+    return ans;
+  }
+
   private float computeCosineSimilarity(float[] p, float[] q) {
     float dp = 0.0f;
     float sumA = 0.0f;

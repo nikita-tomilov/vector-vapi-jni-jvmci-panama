@@ -2,7 +2,7 @@ package ru.ifmo.se.calculators;
 
 import one.nalim.Linker;
 import ru.ifmo.se.jni.NativeMathJvmci;
-import static ru.ifmo.se.util.VectorUtil.flatten;
+import static ru.ifmo.se.util.VectorUtil.*;
 
 public class NativeJvmciCalculator implements Calculator {
 
@@ -54,5 +54,23 @@ public class NativeJvmciCalculator implements Calculator {
     float[] ans = new float[b.length];
     NativeMathJvmci.computeAngularDistanceMultiN(a, a.length, bb, bb.length, ans);
     return ans;
+  }
+
+  @Override
+  public float[][] computeEuclideanDistanceMatrix(float[][] a) {
+    int n = a.length;
+    float[] aa = flatten(a);
+    float[] ans = new float[n * n];
+    NativeMathJvmci.computeEuclideanDistanceMatrixN(aa, aa.length, n, a[0].length, ans);
+    return deflatten(ans, n, n);
+  }
+
+  @Override
+  public float[][] computeAngularDistanceMatrix(float[][] a) {
+    int n = a.length;
+    float[] aa = flatten(a);
+    float[] ans = new float[n * n];
+    NativeMathJvmci.computeAngularDistanceMatrixN(aa, aa.length, n, a[0].length, ans);
+    return deflatten(ans, n, n);
   }
 }

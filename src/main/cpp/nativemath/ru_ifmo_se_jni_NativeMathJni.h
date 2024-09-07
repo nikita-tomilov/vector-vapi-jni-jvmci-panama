@@ -63,6 +63,22 @@ JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeEuclidean
 JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAngularDistanceMulti
   (JNIEnv *, jobject, jfloatArray, jfloatArray, jint, jint);
 
+/*
+ * Class:     ru_ifmo_se_jni_NativeMathJni
+ * Method:    computeEuclideanDistanceMatrix
+ * Signature: ([FII)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeEuclideanDistanceMatrix
+  (JNIEnv *, jobject, jfloatArray, jint, jint);
+
+/*
+ * Class:     ru_ifmo_se_jni_NativeMathJni
+ * Method:    computeAngularDistanceMatrix
+ * Signature: ([FII)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAngularDistanceMatrix
+  (JNIEnv *, jobject, jfloatArray, jint, jint);
+
 #ifdef __cplusplus
 }
 #endif

@@ -38,4 +38,14 @@ public class VectorUtil {
 
     return aa;
   }
+
+  public static float[][] deflatten(final float[] a, int count, int dim) {
+    float[][] ans = new float[count][dim];
+    for (int i = 0; i < count; i++) {
+      float[] row = new float[dim];
+      System.arraycopy(a, i * dim, row, 0, dim);
+      ans[i] = row;
+    }
+    return ans;
+  }
 }

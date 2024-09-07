@@ -15,4 +15,8 @@ public class NativeMathJni {
   public native float[] computeEuclideanDistanceMulti(float[] a, float[] b, int count, int dim);
 
   public native float[] computeAngularDistanceMulti(float[] a, float[] b, int count, int dim);
+
+  public native float[] computeEuclideanDistanceMatrix(float[] a, int count, int dim);
+
+  public native float[] computeAngularDistanceMatrix(float[] a, int count, int dim);
 }

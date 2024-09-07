@@ -110,6 +110,44 @@ void computeAngularDistanceMultiN(float* a, int dim, float* bb, int bSize, float
     return computeAngularDistanceMulti(a, bb, count, dim, ans);
 }
 
+void computeEuclideanDistanceMatrix(float* a, int count, int dim, float* ans) {
+    for (int i = 0; i < count; i++) {
+        for (int j = 0; j < i; j++) {
+            float* aa = (a + i * dim);
+            float* bb = (a + j * dim);
+            float dist = computeEuclideanDistance(aa, bb, dim);
+            ans[i * count + j] = dist;
+            ans[j * count + i] = dist;
+        }
+        ans[i * count + i] = 0;
+    }
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeEuclideanDistanceMatrixN(float* a, int aSize, int count, int dim, float* ans) {
+    UNUSED(aSize);
+    return computeEuclideanDistanceMatrix(a, count, dim, ans);
+}
+
+void computeAngularDistanceMatrix(float* a, int count, int dim, float* ans) {
+    for (int i = 0; i < count; i++) {
+        for (int j = 0; j < i; j++) {
+            float* aa = (a + i * dim);
+            float* bb = (a + j * dim);
+            float dist = computeAngularDistance(aa, bb, dim);
+            ans[i * count + j] = dist;
+            ans[j * count + i] = dist;
+        }
+        ans[i * count + i] = 0;
+    }
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeAngularDistanceMatrixN(float* a, int aSize, int count, int dim, float* ans) {
+    UNUSED(aSize);
+    return computeAngularDistanceMatrix(a, count, dim, ans);
+}
+
 JNIEXPORT jfloat JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAverageValue
   (JNIEnv *env, jobject, jfloatArray arr, jint size) {
     float a[size];
@@ -199,5 +237,37 @@ JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAngularDi
 
     delete[] aa;
     delete[] bbb;
+    return ansArr;
+}
+
+JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeEuclideanDistanceMatrix
+  (JNIEnv * env, jobject, jfloatArray a, jint count, jint dim) {
+    auto* ans = new float[count * count];
+    auto* aa = new float[count * dim];
+    env->GetFloatArrayRegion(a, 0, count * dim, aa);
+
+    computeEuclideanDistanceMatrix(aa, count, dim, ans);
+
+    auto ansArr = env->NewFloatArray(count * count);
+    env->SetFloatArrayRegion(ansArr, 0, count * count, ans);
+
+    delete[] ans;
+    delete[] aa;
+    return ansArr;
+}
+
+JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAngularDistanceMatrix
+  (JNIEnv * env, jobject, jfloatArray a, jint count, jint dim) {
+    auto* ans = new float[count * count];
+    auto* aa = new float[count * dim];
+    env->GetFloatArrayRegion(a, 0, count * dim, aa);
+    
+    computeAngularDistanceMatrix(aa, count, dim, ans);
+
+    auto ansArr = env->NewFloatArray(count * count);
+    env->SetFloatArrayRegion(ansArr, 0, count * count, ans);
+
+    delete[] ans;
+    delete[] aa;
     return ansArr;
 }
