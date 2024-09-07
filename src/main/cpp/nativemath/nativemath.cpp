@@ -67,12 +67,6 @@ void computeAverageVector(const float *p, int count, int dim, float *ans) {
 }
 
 extern "C" __attribute__((visibility("default")))
-void computeAverageVectorN(const float *p, int pSize, int count, int dim, float* ans) {
-    UNUSED(pSize);
-    computeAverageVector(p, count, dim, ans);
-}
-
-extern "C" __attribute__((visibility("default")))
 float computeDispersion(const float *p, int size) {
     if (size <= 1) return 0.0f;
     float mean = computeAverageValue(p, size);
@@ -83,7 +77,6 @@ float computeDispersion(const float *p, int size) {
     return sum / size;
 }
 
-
 void computeEuclideanDistanceMulti(float* a, float* bb, int count, int dim, float* ans) {
     for (int i = 0; i < count; i++) {
         float dist = computeEuclideanDistance(a, (bb + i * dim), dim);
@@ -91,23 +84,11 @@ void computeEuclideanDistanceMulti(float* a, float* bb, int count, int dim, floa
     }
 }
 
-extern "C" __attribute__((visibility("default")))
-void computeEuclideanDistanceMultiN(float* a, int dim, float* bb, int bSize, float* ans) {
-    int count = bSize / dim;
-    return computeEuclideanDistanceMulti(a, bb, count, dim, ans);
-}
-
 void computeAngularDistanceMulti(float* a, float* bb, int count, int dim, float* ans) {
     for (int i = 0; i < count; i++) {
         float dist = computeAngularDistance(a, (bb + i * dim), dim);
         ans[i] = dist;
     }
-}
-
-extern "C" __attribute__((visibility("default")))
-void computeAngularDistanceMultiN(float* a, int dim, float* bb, int bSize, float* ans) {
-    int count = bSize / dim;
-    return computeAngularDistanceMulti(a, bb, count, dim, ans);
 }
 
 void computeEuclideanDistanceMatrix(float* a, int count, int dim, float* ans) {
@@ -123,12 +104,6 @@ void computeEuclideanDistanceMatrix(float* a, int count, int dim, float* ans) {
     }
 }
 
-extern "C" __attribute__((visibility("default")))
-void computeEuclideanDistanceMatrixN(float* a, int aSize, int count, int dim, float* ans) {
-    UNUSED(aSize);
-    return computeEuclideanDistanceMatrix(a, count, dim, ans);
-}
-
 void computeAngularDistanceMatrix(float* a, int count, int dim, float* ans) {
     for (int i = 0; i < count; i++) {
         for (int j = 0; j < i; j++) {
@@ -140,12 +115,6 @@ void computeAngularDistanceMatrix(float* a, int count, int dim, float* ans) {
         }
         ans[i * count + i] = 0;
     }
-}
-
-extern "C" __attribute__((visibility("default")))
-void computeAngularDistanceMatrixN(float* a, int aSize, int count, int dim, float* ans) {
-    UNUSED(aSize);
-    return computeAngularDistanceMatrix(a, count, dim, ans);
 }
 
 JNIEXPORT jfloat JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAverageValue
@@ -270,4 +239,34 @@ JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAngularDi
     delete[] ans;
     delete[] aa;
     return ansArr;
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeAverageVectorN(const float *p, int pSize, int count, int dim, float* ans) {
+    UNUSED(pSize);
+    computeAverageVector(p, count, dim, ans);
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeEuclideanDistanceMultiN(float* a, int dim, float* bb, int bSize, float* ans) {
+    int count = bSize / dim;
+    return computeEuclideanDistanceMulti(a, bb, count, dim, ans);
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeAngularDistanceMultiN(float* a, int dim, float* bb, int bSize, float* ans) {
+    int count = bSize / dim;
+    return computeAngularDistanceMulti(a, bb, count, dim, ans);
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeEuclideanDistanceMatrixN(float* a, int aSize, int count, int dim, float* ans) {
+    UNUSED(aSize);
+    return computeEuclideanDistanceMatrix(a, count, dim, ans);
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeAngularDistanceMatrixN(float* a, int aSize, int count, int dim, float* ans) {
+    UNUSED(aSize);
+    return computeAngularDistanceMatrix(a, count, dim, ans);
 }

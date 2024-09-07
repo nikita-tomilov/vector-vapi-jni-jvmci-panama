@@ -36,7 +36,7 @@ public class NativeJvmciCalculator implements Calculator {
   public float[] computeAverageVector(final float[][] a) {
     float[] aa = flatten(a);
     float[] ans = new float[a[0].length];
-    NativeMathJvmci.computeAverageVectorN(aa, aa.length, a[0].length, a.length, ans);
+    NativeMathJvmci.computeAverageVectorN(aa, aa.length, a.length, a[0].length, ans);
     return ans;
   }
 
