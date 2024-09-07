@@ -11,4 +11,8 @@ public class NativeMathJni {
   public native float computeDispersion(float[] values, int size);
 
   public native float[] computeAverageVector(float[] values, int dim, int n);
+
+  public native float[] computeEuclideanDistanceMulti(float[] a, float[] b, int count, int dim);
+
+  public native float[] computeAngularDistanceMulti(float[] a, float[] b, int count, int dim);
 }

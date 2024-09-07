@@ -1,5 +1,6 @@
 #include <cmath>
 #include "ru_ifmo_se_jni_NativeMathJni.h"
+#include <iostream>
 #define UNUSED(x) (void)(x)
 
 float computeEuclideanDistance(const float *p, const float *q, int size) {
@@ -55,19 +56,20 @@ float computeAverageValue(const float *p, int size) {
     return avg / size;
 }
 
-void computeAverageVector(const float *p, int size, int dim, float *ans) {
+void computeAverageVector(const float *p, int count, int dim, float *ans) {
     for (int i = 0; i < dim; i++) {
         double sum = 0;
-        for (int j = 0; j < size; j++) {
+        for (int j = 0; j < count; j++) {
             sum += p[j * dim + i];
         }
-        ans[i] = sum / size;
+        ans[i] = sum / count;
     }
 }
 
 extern "C" __attribute__((visibility("default")))
-void computeAverageVectorN(const float *p, int, int size, int dim, float* ans) {
-    computeAverageVector(p, size, dim, ans);
+void computeAverageVectorN(const float *p, int pSize, int count, int dim, float* ans) {
+    UNUSED(pSize);
+    computeAverageVector(p, count, dim, ans);
 }
 
 extern "C" __attribute__((visibility("default")))
@@ -79,6 +81,33 @@ float computeDispersion(const float *p, int size) {
         sum += (p[i] - mean) * (p[i] - mean);
     }
     return sum / size;
+}
+
+
+void computeEuclideanDistanceMulti(float* a, float* bb, int count, int dim, float* ans) {
+    for (int i = 0; i < count; i++) {
+        float dist = computeEuclideanDistance(a, (bb + i * dim), dim);
+        ans[i] = dist;
+    }
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeEuclideanDistanceMultiN(float* a, int dim, float* bb, int bSize, float* ans) {
+    int count = bSize / dim;
+    return computeEuclideanDistanceMulti(a, bb, count, dim, ans);
+}
+
+void computeAngularDistanceMulti(float* a, float* bb, int count, int dim, float* ans) {
+    for (int i = 0; i < count; i++) {
+        float dist = computeAngularDistance(a, (bb + i * dim), dim);
+        ans[i] = dist;
+    }
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeAngularDistanceMultiN(float* a, int dim, float* bb, int bSize, float* ans) {
+    int count = bSize / dim;
+    return computeAngularDistanceMulti(a, bb, count, dim, ans);
 }
 
 JNIEXPORT jfloat JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAverageValue
@@ -121,16 +150,54 @@ JNIEXPORT jfloat JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeDispersion
 }
 
 JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAverageVector
-        (JNIEnv *env, jobject, jfloatArray pm, jint dim, jint size) {
-    auto p = new float[dim * size];
+        (JNIEnv *env, jobject, jfloatArray pm, jint dim, jint count) {
+    auto p = new float[dim * count];
     float a[dim];
 
-    env->GetFloatArrayRegion(pm, 0, dim * size, p);
-    computeAverageVector(p, size, dim, a);
+    env->GetFloatArrayRegion(pm, 0, dim * count, p);
+    computeAverageVector(p, count, dim, a);
 
     auto ansArr = env->NewFloatArray(dim);
     env->SetFloatArrayRegion(ansArr, 0, dim, a);
 
     delete[] p;
+    return ansArr;
+}
+
+JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeEuclideanDistanceMulti
+  (JNIEnv * env, jobject, jfloatArray a, jfloatArray bb, jint count, jint dim) {
+    auto aa = new float[dim];
+    auto bbb = new float[dim * count];
+    float ans[count];
+
+    env->GetFloatArrayRegion(a, 0, dim, aa);
+    env->GetFloatArrayRegion(bb, 0, dim * count, bbb);
+
+    computeEuclideanDistanceMulti(aa, bbb, count, dim, ans);
+
+    auto ansArr = env->NewFloatArray(count);
+    env->SetFloatArrayRegion(ansArr, 0, count, ans);
+
+    delete[] aa;
+    delete[] bbb;
+    return ansArr;
+}
+
+JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAngularDistanceMulti
+  (JNIEnv * env, jobject, jfloatArray a, jfloatArray bb, jint count, jint dim) {
+    auto aa = new float[dim];
+    auto bbb = new float[dim * count];
+    float ans[count];
+
+    env->GetFloatArrayRegion(a, 0, dim, aa);
+    env->GetFloatArrayRegion(bb, 0, dim * count, bbb);
+
+    computeAngularDistanceMulti(aa, bbb, count, dim, ans);
+
+    auto ansArr = env->NewFloatArray(count);
+    env->SetFloatArrayRegion(ansArr, 0, count, ans);
+
+    delete[] aa;
+    delete[] bbb;
     return ansArr;
 }

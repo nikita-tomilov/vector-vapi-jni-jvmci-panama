@@ -1,8 +1,8 @@
 package ru.ifmo.se.calculators;
 
-import one.nalim.Link;
 import one.nalim.Linker;
 import ru.ifmo.se.jni.NativeMathJvmci;
+import static ru.ifmo.se.util.VectorUtil.flatten;
 
 public class NativeJvmciCalculator implements Calculator {
 
@@ -34,12 +34,25 @@ public class NativeJvmciCalculator implements Calculator {
 
   @Override
   public float[] computeAverageVector(final float[][] a) {
-    float[] aa = new float[a.length * a[0].length];
+    float[] aa = flatten(a);
+    float[] ans = new float[a[0].length];
+    NativeMathJvmci.computeAverageVectorN(aa, aa.length, a[0].length, a.length, ans);
+    return ans;
+  }
 
-    for (int i = 0; i < a.length; i++) {
-      System.arraycopy(a[i], 0, aa, i * a[i].length, a[i].length);
-    }
+  @Override
+  public float[] computeEuclideanDistances(final float[] a, final float[][] b) {
+    float[] bb = flatten(b);
+    float[] ans = new float[b.length];
+    NativeMathJvmci.computeEuclideanDistanceMultiN(a, a.length, bb, bb.length, ans);
+    return ans;
+  }
 
-    return NativeMathJvmci.computeAverageVectorN(aa, aa.length, a[0].length, a.length);
+  @Override
+  public float[] computeAngularDistances(final float[] a, final float[][] b) {
+    float[] bb = flatten(b);
+    float[] ans = new float[b.length];
+    NativeMathJvmci.computeAngularDistanceMultiN(a, a.length, bb, bb.length, ans);
+    return ans;
   }
 }

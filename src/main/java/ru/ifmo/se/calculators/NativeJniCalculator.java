@@ -1,6 +1,7 @@
 package ru.ifmo.se.calculators;
 
 import ru.ifmo.se.jni.NativeMathJni;
+import static ru.ifmo.se.util.VectorUtil.flatten;
 
 public class NativeJniCalculator implements Calculator {
 
@@ -33,12 +34,19 @@ public class NativeJniCalculator implements Calculator {
 
   @Override
   public float[] computeAverageVector(final float[][] a) {
-    float[] aa = new float[a.length * a[0].length];
-
-    for (int i = 0; i < a.length; i++) {
-      System.arraycopy(a[i], 0, aa, i * a[i].length, a[i].length);
-    }
-
+    float[] aa = flatten(a);
     return jni.computeAverageVector(aa, a[0].length, a.length);
+  }
+
+  @Override
+  public float[] computeEuclideanDistances(final float[] a, final float[][] b) {
+    float[] bb = flatten(b);
+    return jni.computeEuclideanDistanceMulti(a, bb, b.length, a.length);
+  }
+
+  @Override
+  public float[] computeAngularDistances(final float[] a, final float[][] b) {
+    float[] bb = flatten(b);
+    return jni.computeAngularDistanceMulti(a, bb, b.length, a.length);
   }
 }

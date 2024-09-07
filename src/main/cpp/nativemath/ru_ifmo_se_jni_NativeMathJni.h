@@ -47,6 +47,22 @@ JNIEXPORT jfloat JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeDispersion
 JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAverageVector
   (JNIEnv *, jobject, jfloatArray, jint, jint);
 
+/*
+ * Class:     ru_ifmo_se_jni_NativeMathJni
+ * Method:    computeEuclideanDistanceMulti
+ * Signature: ([F[FII)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeEuclideanDistanceMulti
+  (JNIEnv *, jobject, jfloatArray, jfloatArray, jint, jint);
+
+/*
+ * Class:     ru_ifmo_se_jni_NativeMathJni
+ * Method:    computeAngularDistanceMulti
+ * Signature: ([F[FII)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_ru_ifmo_se_jni_NativeMathJni_computeAngularDistanceMulti
+  (JNIEnv *, jobject, jfloatArray, jfloatArray, jint, jint);
+
 #ifdef __cplusplus
 }
 #endif

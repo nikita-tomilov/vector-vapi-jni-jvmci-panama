@@ -38,3 +38,5 @@ build/
 cmake-build-debug/
 *.so
 *.dylib
+
+hs_err*.log

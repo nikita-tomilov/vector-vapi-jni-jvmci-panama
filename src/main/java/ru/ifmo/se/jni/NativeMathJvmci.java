@@ -17,5 +17,11 @@ public class NativeMathJvmci {
   public static native float computeDispersion(float[] values, int size);
 
   @Link
-  public static native float[] computeAverageVectorN(float[] values, int size, int dim, int n);
+  public static native void computeAverageVectorN(float[] values, int size, int dim, int n, float[] ans);
+
+  @Link
+  public static native void computeEuclideanDistanceMultiN(float[] a, int aSize, float[] b, int bSize, float[] ans);
+
+  @Link
+  public static native void computeAngularDistanceMultiN(float[] a, int aSize, float[] b, int bSize, float[] ans);
 }

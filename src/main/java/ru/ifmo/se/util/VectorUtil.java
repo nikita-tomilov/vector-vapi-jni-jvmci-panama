@@ -15,7 +15,10 @@ public class VectorUtil {
     return vector;
   }
 
-  public static float[][] generateRandomMatrix(final String dimensionParam, final String vectorsCountParam) {
+  public static float[][] generateRandomMatrix(
+      final String dimensionParam,
+      final String vectorsCountParam
+  ) {
     int dimension = Integer.parseInt(dimensionParam);
     int vectorsCount = Integer.parseInt(vectorsCountParam);
 
@@ -24,5 +27,15 @@ public class VectorUtil {
       matrix[i] = generateRandomVector(dimensionParam);
     }
     return matrix;
+  }
+
+  public static float[] flatten(final float[][] a) {
+    final var aa = new float[a.length * a[0].length];
+
+    for (int i = 0; i < a.length; i++) {
+      System.arraycopy(a[i], 0, aa, i * a[i].length, a[i].length);
+    }
+
+    return aa;
   }
 }

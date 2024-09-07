@@ -62,6 +62,24 @@ public class PlainJavaCalculator implements Calculator {
     return ans;
   }
 
+  @Override
+  public float[] computeEuclideanDistances(float[] a, float[][] b) {
+    final var ans = new float[b.length];
+    for (int i = 0; i < b.length; i++) {
+      ans[i] = computeEuclideanDistance(a, b[i]);
+    }
+    return ans;
+  }
+
+  @Override
+  public float[] computeAngularDistances(float[] a, float[][] b) {
+    final var ans = new float[b.length];
+    for (int i = 0; i < b.length; i++) {
+      ans[i] = computeAngularDistance(a, b[i]);
+    }
+    return ans;
+  }
+
   private float computeCosineSimilarity(final float[] a, final float[] b) {
     float a2 = 0.0f;
     float b2 = 0.0f;

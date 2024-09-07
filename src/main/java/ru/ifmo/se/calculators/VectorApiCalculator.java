@@ -97,6 +97,24 @@ public class VectorApiCalculator implements Calculator {
     return ans;
   }
 
+  @Override
+  public float[] computeEuclideanDistances(float[] a, float[][] b) {
+    final var ans = new float[b.length];
+    for (int i = 0; i < b.length; i++) {
+      ans[i] = computeEuclideanDistance(a, b[i]);
+    }
+    return ans;
+  }
+
+  @Override
+  public float[] computeAngularDistances(float[] a, float[][] b) {
+    final var ans = new float[b.length];
+    for (int i = 0; i < b.length; i++) {
+      ans[i] = computeAngularDistance(a, b[i]);
+    }
+    return ans;
+  }
+
   private float computeCosineSimilarity(float[] p, float[] q) {
     float dp = 0.0f;
     float sumA = 0.0f;

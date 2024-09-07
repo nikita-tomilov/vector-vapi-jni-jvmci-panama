@@ -12,19 +12,7 @@ public interface Calculator {
 
   float[] computeAverageVector(float[][] a);
 
-  default float[] computeEuclideanDistances(float[] a, float[][] b) {
-    final var ans = new float[b.length];
-    for (int i = 0; i < b.length; i++) {
-      ans[i] = computeEuclideanDistance(a, b[i]);
-    }
-    return ans;
-  }
+  float[] computeEuclideanDistances(float[] a, float[][] b) ;
 
-  default float[] computeAngularDistances(float[] a, float[][] b) {
-    final var ans = new float[b.length];
-    for (int i = 0; i < b.length; i++) {
-      ans[i] = computeEuclideanDistance(a, b[i]);
-    }
-    return ans;
-  }
+  float[] computeAngularDistances(float[] a, float[][] b);
 }
