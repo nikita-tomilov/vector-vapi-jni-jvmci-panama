@@ -18,8 +18,9 @@ class CalculatorTest {
   final List<Calculator> calculators = List.of(
       new PlainJavaCalculator(),
       new VectorApiCalculator(),
-      new NativeJniCalculator(),
-      new NativeJvmciCalculator()
+      new NativeJniCalculator()
+      // new NativeJvmciCalculator() // Does not work on Java 22
+      // new NativePanamaCalculator() // Works only on Java 22, wont compile on earlier Java versions
   );
 
   @Test

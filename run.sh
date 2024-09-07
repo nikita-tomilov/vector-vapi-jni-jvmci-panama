@@ -1,5 +1,7 @@
 #!/bin/bash
 . env.sh
+
+# JVMCI library Nalim does not work with JDK 22, downgrading to 17
 java17jvmci \
       -DbenchmarksInclude=SingleArrayOperations \
       -Dmode=AverageTime \

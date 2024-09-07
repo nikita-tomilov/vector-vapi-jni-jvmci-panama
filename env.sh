@@ -21,7 +21,7 @@ function java17jvmci() {
 function java22panama() {
   $JAVA_22_HOME/bin/java \
     --enable-native-access=ALL-UNNAMED \
-     --enable-preview --add-modules jdk.incubator.vector \
+    --enable-preview --add-modules jdk.incubator.vector \
     "$@"
 }
 

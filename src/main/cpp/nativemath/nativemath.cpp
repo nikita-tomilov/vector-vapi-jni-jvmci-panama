@@ -1,3 +1,4 @@
+#include "nativemath.h"
 #include <cmath>
 #include "ru_ifmo_se_jni_NativeMathJni.h"
 #include <iostream>
@@ -269,4 +270,26 @@ extern "C" __attribute__((visibility("default")))
 void computeAngularDistanceMatrixN(float* a, int aSize, int count, int dim, float* ans) {
     UNUSED(aSize);
     return computeAngularDistanceMatrix(a, count, dim, ans);
+}
+
+extern "C" __attribute__((visibility("default")))
+long getAddrP(const float* arr) {
+  return reinterpret_cast<long>(arr);
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeAverageVectorP(const long *p, int count, int dim, float* ans) {
+
+    for (int i = 0; i < count; i++) {
+        long addr = p[i];
+        float* arr = reinterpret_cast<float*>(addr);
+
+        for (int j = 0; j < dim; j++) {
+            ans[j] += arr[j];
+        }
+    }
+
+    for (int j = 0; j < dim; j++) {
+        ans[j] = ans[j] / count;
+    }
 }
