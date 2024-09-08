@@ -487,5 +487,247 @@ public class nativemath_h {
            throw new AssertionError("should not reach here", ex$);
         }
     }
+
+    private static class computeEuclideanDistanceMultiP {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            nativemath_h.C_POINTER,
+            nativemath_h.C_INT,
+            nativemath_h.C_POINTER,
+            nativemath_h.C_INT,
+            nativemath_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = nativemath_h.findOrThrow("computeEuclideanDistanceMultiP");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC, Option.critical(true));
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void computeEuclideanDistanceMultiP(const long *p, int count, float *a, int dim, float *ans)
+     * }
+     */
+    public static FunctionDescriptor computeEuclideanDistanceMultiP$descriptor() {
+        return computeEuclideanDistanceMultiP.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void computeEuclideanDistanceMultiP(const long *p, int count, float *a, int dim, float *ans)
+     * }
+     */
+    public static MethodHandle computeEuclideanDistanceMultiP$handle() {
+        return computeEuclideanDistanceMultiP.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void computeEuclideanDistanceMultiP(const long *p, int count, float *a, int dim, float *ans)
+     * }
+     */
+    public static MemorySegment computeEuclideanDistanceMultiP$address() {
+        return computeEuclideanDistanceMultiP.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void computeEuclideanDistanceMultiP(const long *p, int count, float *a, int dim, float *ans)
+     * }
+     */
+    public static void computeEuclideanDistanceMultiP(MemorySegment p, int count, MemorySegment a, int dim, MemorySegment ans) {
+        var mh$ = computeEuclideanDistanceMultiP.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("computeEuclideanDistanceMultiP", p, count, a, dim, ans);
+            }
+            mh$.invokeExact(p, count, a, dim, ans);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class computeAngularDistanceMultiP {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            nativemath_h.C_POINTER,
+            nativemath_h.C_INT,
+            nativemath_h.C_POINTER,
+            nativemath_h.C_INT,
+            nativemath_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = nativemath_h.findOrThrow("computeAngularDistanceMultiP");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC, Option.critical(true));
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void computeAngularDistanceMultiP(const long *p, int count, float *a, int dim, float *ans)
+     * }
+     */
+    public static FunctionDescriptor computeAngularDistanceMultiP$descriptor() {
+        return computeAngularDistanceMultiP.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void computeAngularDistanceMultiP(const long *p, int count, float *a, int dim, float *ans)
+     * }
+     */
+    public static MethodHandle computeAngularDistanceMultiP$handle() {
+        return computeAngularDistanceMultiP.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void computeAngularDistanceMultiP(const long *p, int count, float *a, int dim, float *ans)
+     * }
+     */
+    public static MemorySegment computeAngularDistanceMultiP$address() {
+        return computeAngularDistanceMultiP.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void computeAngularDistanceMultiP(const long *p, int count, float *a, int dim, float *ans)
+     * }
+     */
+    public static void computeAngularDistanceMultiP(MemorySegment p, int count, MemorySegment a, int dim, MemorySegment ans) {
+        var mh$ = computeAngularDistanceMultiP.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("computeAngularDistanceMultiP", p, count, a, dim, ans);
+            }
+            mh$.invokeExact(p, count, a, dim, ans);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class computeEuclideanDistanceMatrixP {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            nativemath_h.C_POINTER,
+            nativemath_h.C_INT,
+            nativemath_h.C_INT,
+            nativemath_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = nativemath_h.findOrThrow("computeEuclideanDistanceMatrixP");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC, Option.critical(true));
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void computeEuclideanDistanceMatrixP(const long *p, int count, int dim, const long *ans)
+     * }
+     */
+    public static FunctionDescriptor computeEuclideanDistanceMatrixP$descriptor() {
+        return computeEuclideanDistanceMatrixP.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void computeEuclideanDistanceMatrixP(const long *p, int count, int dim, const long *ans)
+     * }
+     */
+    public static MethodHandle computeEuclideanDistanceMatrixP$handle() {
+        return computeEuclideanDistanceMatrixP.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void computeEuclideanDistanceMatrixP(const long *p, int count, int dim, const long *ans)
+     * }
+     */
+    public static MemorySegment computeEuclideanDistanceMatrixP$address() {
+        return computeEuclideanDistanceMatrixP.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void computeEuclideanDistanceMatrixP(const long *p, int count, int dim, const long *ans)
+     * }
+     */
+    public static void computeEuclideanDistanceMatrixP(MemorySegment p, int count, int dim, MemorySegment ans) {
+        var mh$ = computeEuclideanDistanceMatrixP.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("computeEuclideanDistanceMatrixP", p, count, dim, ans);
+            }
+            mh$.invokeExact(p, count, dim, ans);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class computeAngularDistanceMatrixP {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            nativemath_h.C_POINTER,
+            nativemath_h.C_INT,
+            nativemath_h.C_INT,
+            nativemath_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = nativemath_h.findOrThrow("computeAngularDistanceMatrixP");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC, Option.critical(true));
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void computeAngularDistanceMatrixP(const long *p, int count, int dim, const long *ans)
+     * }
+     */
+    public static FunctionDescriptor computeAngularDistanceMatrixP$descriptor() {
+        return computeAngularDistanceMatrixP.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void computeAngularDistanceMatrixP(const long *p, int count, int dim, const long *ans)
+     * }
+     */
+    public static MethodHandle computeAngularDistanceMatrixP$handle() {
+        return computeAngularDistanceMatrixP.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void computeAngularDistanceMatrixP(const long *p, int count, int dim, const long *ans)
+     * }
+     */
+    public static MemorySegment computeAngularDistanceMatrixP$address() {
+        return computeAngularDistanceMatrixP.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void computeAngularDistanceMatrixP(const long *p, int count, int dim, const long *ans)
+     * }
+     */
+    public static void computeAngularDistanceMatrixP(MemorySegment p, int count, int dim, MemorySegment ans) {
+        var mh$ = computeAngularDistanceMatrixP.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("computeAngularDistanceMatrixP", p, count, dim, ans);
+            }
+            mh$.invokeExact(p, count, dim, ans);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
 }
 

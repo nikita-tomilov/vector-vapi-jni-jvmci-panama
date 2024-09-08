@@ -10,13 +10,32 @@ java17jvmci \
       -Dparamcalc=NativeJvmci \
       -DresultName=SingleArrayOperations-JVMCI-JDK17 \
       -jar $BENCH17
+#
+#java17jvmci \
+#      -DbenchmarksInclude=MultiArrayOperations \
+#      -Dmode=AverageTime \
+#      -DtimeUnit=MICROSECONDS \
+#      -Dparamdimension=256,384,768 \
+#      -DparamvectorsCount=100,250,500 \
+#      -Dparamcalc=NativeJvmci \
+#      -DresultName=MultiArrayOperations-JVMCI-JDK17 \
+#      -jar $BENCH17
 
-java17jvmci \
-      -DbenchmarksInclude=MultiArrayOperations \
-      -Dmode=AverageTime \
-      -DtimeUnit=MICROSECONDS \
-      -Dparamdimension=256,384,768 \
-      -DparamvectorsCount=100,250,500 \
-      -Dparamcalc=NativeJvmci \
-      -DresultName=MultiArrayOperations-JVMCI-JDK17 \
-      -jar $BENCH17
+#java22panama \
+#      -DbenchmarksInclude=SingleArrayOperations \
+#      -Dmode=AverageTime \
+#      -DtimeUnit=NANOSECONDS \
+#      -Dparamdimension=256,384,768 \
+#      -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
+#      -DresultName=SingleArrayOperations-JDK22 \
+#      -jar $BENCH22
+#
+#java22panama \
+#      -DbenchmarksInclude=MultiArrayOperations \
+#      -Dmode=AverageTime \
+#      -DtimeUnit=MICROSECONDS \
+#      -Dparamdimension=256,384,768 \
+#      -DparamvectorsCount=100,250,500 \
+#      -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
+#      -DresultName=MultiArrayOperations-JDK22 \
+#      -jar $BENCH22

@@ -20,3 +20,15 @@ long getAddrP(const float* arr);
 
 extern "C" __attribute__((visibility("default")))
 void computeAverageVectorP(const long *p, int count, int dim, float* ans);
+
+extern "C" __attribute__((visibility("default")))
+void computeEuclideanDistanceMultiP(const long *p, int count, float* a, int dim, float* ans);
+
+extern "C" __attribute__((visibility("default")))
+void computeAngularDistanceMultiP(const long *p, int count, float* a, int dim, float* ans);
+
+extern "C" __attribute__((visibility("default")))
+void computeEuclideanDistanceMatrixP(const long *p, int count, int dim, const long* ans);
+
+extern "C" __attribute__((visibility("default")))
+void computeAngularDistanceMatrixP(const long *p, int count, int dim, const long* ans);

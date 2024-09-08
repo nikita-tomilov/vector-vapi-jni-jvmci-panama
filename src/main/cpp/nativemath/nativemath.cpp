@@ -293,3 +293,63 @@ void computeAverageVectorP(const long *p, int count, int dim, float* ans) {
         ans[j] = ans[j] / count;
     }
 }
+
+extern "C" __attribute__((visibility("default")))
+void computeEuclideanDistanceMultiP(const long *p, int count, float* a, int dim, float* ans) {
+    for (int i = 0; i < count; i++) {
+        long addr = p[i];
+        float* b = reinterpret_cast<float*>(addr);
+        float dist = computeEuclideanDistance(a, b, dim);
+        ans[i] = dist;
+    }
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeAngularDistanceMultiP(const long *p, int count, float* a, int dim, float* ans) {
+    for (int i = 0; i < count; i++) {
+        long addr = p[i];
+        float* b = reinterpret_cast<float*>(addr);
+        float dist = computeAngularDistance(a, b, dim);
+        ans[i] = dist;
+    }
+}
+
+void setByAddrP(int i, int j, const long* ans, float value) {
+    long addr = ans[i];
+    float* arr = reinterpret_cast<float*>(addr);
+    arr[j] = value;
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeEuclideanDistanceMatrixP(const long *p, int count, int dim, const long* ans) {
+    for (int i = 0; i < count; i++) {
+        long addrA = p[i];
+        float* a = reinterpret_cast<float*>(addrA);
+        for (int j = 0; j < i; j++) {
+            long addrB = p[j];
+            float* b = reinterpret_cast<float*>(addrB);
+
+            float dist = computeEuclideanDistance(a, b, dim);
+            setByAddrP(i, j, ans, dist);
+            setByAddrP(j, i, ans, dist);
+        }
+        setByAddrP(i, i, ans, 0.0f);
+    }
+}
+
+extern "C" __attribute__((visibility("default")))
+void computeAngularDistanceMatrixP(const long *p, int count, int dim, const long* ans) {
+    for (int i = 0; i < count; i++) {
+        long addrA = p[i];
+        float* a = reinterpret_cast<float*>(addrA);
+        for (int j = 0; j < i; j++) {
+            long addrB = p[j];
+            float* b = reinterpret_cast<float*>(addrB);
+
+            float dist = computeAngularDistance(a, b, dim);
+            setByAddrP(i, j, ans, dist);
+            setByAddrP(j, i, ans, dist);
+        }
+        setByAddrP(i, i, ans, 0.0f);
+    }
+}

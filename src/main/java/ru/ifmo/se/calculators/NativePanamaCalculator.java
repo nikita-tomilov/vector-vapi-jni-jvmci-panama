@@ -37,21 +37,62 @@ public class NativePanamaCalculator implements Calculator {
 
   @Override
   public float[] computeAverageVector(final float[][] a) {
+    final var input = convertToArrayOfPointersToRows(a);
 
-    // 20000 ns/op
-    /*float[] aa = new float[a.length * a[0].length];
-    for (int i = 0; i < a.length; i++) {
-      System.arraycopy(a[i], 0, aa, i * a[i].length, a[i].length);
-    }
-    final var input = MemorySegment.ofArray(aa);
     final var outputArr = new float[a[0].length];
     final var output = MemorySegment.ofArray(outputArr);
-    nativemath_h.computeAverageVectorN(input, aa.length, a.length, a[0].length, output);
-    return outputArr;
-    */
 
-    // 9532 ns/op with ver direct 1
-    // 1700 ns/op with ver direct 2
+    nativemath_h.computeAverageVectorP(input, a.length, a[0].length, output);
+    return outputArr;
+  }
+
+  @Override
+  public float[] computeEuclideanDistances(final float[] a, final float[][] b) {
+    int dim = a.length;
+    final var bb = convertToArrayOfPointersToRows(b);
+    final var aa = MemorySegment.ofArray(a);
+    final var outputArr = new float[b.length];
+    final var output = MemorySegment.ofArray(outputArr);
+
+    nativemath_h.computeEuclideanDistanceMultiP(bb, b.length, aa, dim, output);
+    return outputArr;
+  }
+
+  @Override
+  public float[] computeAngularDistances(final float[] a, final float[][] b) {
+    int dim = a.length;
+    final var bb = convertToArrayOfPointersToRows(b);
+    final var aa = MemorySegment.ofArray(a);
+    final var outputArr = new float[b.length];
+    final var output = MemorySegment.ofArray(outputArr);
+
+    nativemath_h.computeAngularDistanceMultiP(bb, b.length, aa, dim, output);
+    return outputArr;
+  }
+
+  @Override
+  public float[][] computeEuclideanDistanceMatrix(final float[][] a) {
+    final float[][] ans = new float[a.length][a.length];
+    final var input = convertToArrayOfPointersToRows(a);
+    final var output = convertToArrayOfPointersToRows(ans);
+
+    nativemath_h.computeEuclideanDistanceMatrixP(input, a.length, a[0].length, output);
+
+    return ans;
+  }
+
+  @Override
+  public float[][] computeAngularDistanceMatrix(final float[][] a) {
+    final float[][] ans = new float[a.length][a.length];
+    final var input = convertToArrayOfPointersToRows(a);
+    final var output = convertToArrayOfPointersToRows(ans);
+
+    nativemath_h.computeAngularDistanceMatrixP(input, a.length, a[0].length, output);
+
+    return ans;
+  }
+
+  private static MemorySegment convertToArrayOfPointersToRows(final float[][] a) {
     final long[] addrs = new long[a.length];
 
     for (int i = 0; i < a.length; i++) {
@@ -61,45 +102,6 @@ public class NativePanamaCalculator implements Calculator {
       addrs[i] = addr;
     }
 
-    final var input = MemorySegment.ofArray(addrs);
-    final var outputArr = new float[a[0].length];
-    final var output = MemorySegment.ofArray(outputArr);
-
-    nativemath_h.computeAverageVectorP(input, a.length, a[0].length, output);
-    return outputArr;
-
-    /*
-    // 21649 ns/op
-    final var segment = Arena.ofAuto().allocate((long) a.length * a[0].length * Float.BYTES);
-    int n = 0;
-    for (float[] row : a) {
-      segment.asSlice(n, (long) row.length * Float.BYTES).copyFrom(MemorySegment.ofArray(row));
-      n += row.length * Float.BYTES;
-    }
-    final var outputArr = new float[a[0].length];
-    final var output = MemorySegment.ofArray(outputArr);
-    nativemath_h.computeAverageVectorN(segment, -1, a.length, a[0].length, output);
-    return outputArr;
-     */
-  }
-
-  @Override
-  public float[] computeEuclideanDistances(final float[] a, final float[][] b) {
-    return new PlainJavaCalculator().computeEuclideanDistances(a, b);
-  }
-
-  @Override
-  public float[] computeAngularDistances(final float[] a, final float[][] b) {
-    return new PlainJavaCalculator().computeAngularDistances(a, b);
-  }
-
-  @Override
-  public float[][] computeEuclideanDistanceMatrix(final float[][] a) {
-    return new PlainJavaCalculator().computeEuclideanDistanceMatrix(a);
-  }
-
-  @Override
-  public float[][] computeAngularDistanceMatrix(final float[][] a) {
-    return new PlainJavaCalculator().computeAngularDistanceMatrix(a);
+    return MemorySegment.ofArray(addrs);
   }
 }

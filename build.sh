@@ -27,3 +27,6 @@ mv /tmp/nativemath_h.java src/main/java/ru/ifmo/se/panama/
 mv /tmp/NativePanamaCalculator.java src/main/java/ru/ifmo/se/calculators/
 ./mvnw clean package
 mv $JAR_FILE $BENCH22
+
+echo -e "\n\n"
+echo "Ready"
