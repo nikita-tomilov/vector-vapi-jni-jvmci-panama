@@ -21,6 +21,14 @@ java17jvmci \
       -DresultName=MultiArrayOperations-JVMCI-JDK17 \
       -jar $BENCH17
 
+java17jvmci \
+      -DbenchmarksInclude=ComplexVectorOperations \
+      -Dmode=AverageTime \
+      -DtimeUnit=MILLISECONDS \
+      -Dparamcalc=NativeJvmci \
+      -DresultName=ComplexVectorOperations-JDK17 \
+      -jar $BENCH17
+
 java22panama \
       -DbenchmarksInclude=SingleArrayOperations \
       -Dmode=AverageTime \
@@ -39,3 +47,11 @@ java22panama \
       -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
       -DresultName=MultiArrayOperations-JDK22 \
       -jar $BENCH22
+
+java22panama \
+     -DbenchmarksInclude=ComplexVectorOperations \
+     -Dmode=AverageTime \
+     -DtimeUnit=MILLISECONDS \
+     -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
+     -DresultName=ComplexVectorOperations-JDK22 \
+     -jar $BENCH22

@@ -1,0 +1,13 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: K","Param: calc","Param: dimension","Param: distance","Param: vectorsCount"
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,21.084554,1.602856,"ms/op",20,NativeJvmci,256,euc,1000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,342.144470,38.270229,"ms/op",20,NativeJvmci,256,euc,5000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,1165.300024,258.315819,"ms/op",20,NativeJvmci,256,euc,10000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,22.857019,1.566814,"ms/op",20,NativeJvmci,256,ang,1000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,327.426212,67.070150,"ms/op",20,NativeJvmci,256,ang,5000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,1250.836600,411.743372,"ms/op",20,NativeJvmci,256,ang,10000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,27.538223,1.027497,"ms/op",50,NativeJvmci,256,euc,1000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,465.237982,89.325437,"ms/op",50,NativeJvmci,256,euc,5000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,1326.626603,388.799889,"ms/op",50,NativeJvmci,256,euc,10000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,29.520327,1.224446,"ms/op",50,NativeJvmci,256,ang,1000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,522.413880,101.137091,"ms/op",50,NativeJvmci,256,ang,5000
+"ru.ifmo.se.benchmarks.ComplexVectorOperations.knn","avgt",1,10,1647.044895,265.709035,"ms/op",50,NativeJvmci,256,ang,10000
