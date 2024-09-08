@@ -1,13 +1,13 @@
 "Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: calc","Param: dimension"
-"ru.ifmo.se.benchmarks.SingleArrayOperations.angularDistance","avgt",1,10,788.728194,22.236783,"ns/op",NativeJvmci,256
-"ru.ifmo.se.benchmarks.SingleArrayOperations.angularDistance","avgt",1,10,780.752074,30.337546,"ns/op",NativeJvmci,384
-"ru.ifmo.se.benchmarks.SingleArrayOperations.angularDistance","avgt",1,10,828.651904,23.387322,"ns/op",NativeJvmci,768
-"ru.ifmo.se.benchmarks.SingleArrayOperations.averageValue","avgt",1,10,747.431529,22.379045,"ns/op",NativeJvmci,256
-"ru.ifmo.se.benchmarks.SingleArrayOperations.averageValue","avgt",1,10,744.936197,27.995948,"ns/op",NativeJvmci,384
-"ru.ifmo.se.benchmarks.SingleArrayOperations.averageValue","avgt",1,10,788.726370,23.583961,"ns/op",NativeJvmci,768
-"ru.ifmo.se.benchmarks.SingleArrayOperations.dispersion","avgt",1,10,764.655875,29.116706,"ns/op",NativeJvmci,256
-"ru.ifmo.se.benchmarks.SingleArrayOperations.dispersion","avgt",1,10,815.703539,21.899139,"ns/op",NativeJvmci,384
-"ru.ifmo.se.benchmarks.SingleArrayOperations.dispersion","avgt",1,10,860.253923,21.415340,"ns/op",NativeJvmci,768
-"ru.ifmo.se.benchmarks.SingleArrayOperations.euclidDistance","avgt",1,10,742.974864,31.722360,"ns/op",NativeJvmci,256
-"ru.ifmo.se.benchmarks.SingleArrayOperations.euclidDistance","avgt",1,10,766.264652,25.851390,"ns/op",NativeJvmci,384
-"ru.ifmo.se.benchmarks.SingleArrayOperations.euclidDistance","avgt",1,10,824.087693,27.992011,"ns/op",NativeJvmci,768
+"ru.ifmo.se.benchmarks.SingleArrayOperations.angularDistance","avgt",1,10,41.339963,0.944776,"ns/op",NativeJvmci,256
+"ru.ifmo.se.benchmarks.SingleArrayOperations.angularDistance","avgt",1,10,47.046531,1.298759,"ns/op",NativeJvmci,384
+"ru.ifmo.se.benchmarks.SingleArrayOperations.angularDistance","avgt",1,10,67.776481,4.246419,"ns/op",NativeJvmci,768
+"ru.ifmo.se.benchmarks.SingleArrayOperations.averageValue","avgt",1,10,36.617942,0.434884,"ns/op",NativeJvmci,256
+"ru.ifmo.se.benchmarks.SingleArrayOperations.averageValue","avgt",1,10,44.391264,1.637342,"ns/op",NativeJvmci,384
+"ru.ifmo.se.benchmarks.SingleArrayOperations.averageValue","avgt",1,10,66.055326,1.074947,"ns/op",NativeJvmci,768
+"ru.ifmo.se.benchmarks.SingleArrayOperations.dispersion","avgt",1,10,66.723798,1.658450,"ns/op",NativeJvmci,256
+"ru.ifmo.se.benchmarks.SingleArrayOperations.dispersion","avgt",1,10,83.317638,0.139348,"ns/op",NativeJvmci,384
+"ru.ifmo.se.benchmarks.SingleArrayOperations.dispersion","avgt",1,10,130.956235,0.166617,"ns/op",NativeJvmci,768
+"ru.ifmo.se.benchmarks.SingleArrayOperations.euclidDistance","avgt",1,10,35.550293,1.890629,"ns/op",NativeJvmci,256
+"ru.ifmo.se.benchmarks.SingleArrayOperations.euclidDistance","avgt",1,10,41.170909,1.289229,"ns/op",NativeJvmci,384
+"ru.ifmo.se.benchmarks.SingleArrayOperations.euclidDistance","avgt",1,10,59.379492,0.270601,"ns/op",NativeJvmci,768

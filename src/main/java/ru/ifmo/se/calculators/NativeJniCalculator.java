@@ -2,13 +2,18 @@ package ru.ifmo.se.calculators;
 
 import ru.ifmo.se.jni.NativeMathJni;
 import static ru.ifmo.se.util.VectorUtil.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NativeJniCalculator implements Calculator {
+
+  private static final AtomicBoolean LOADED = new AtomicBoolean(false);
 
   private final NativeMathJni jni;
 
   public NativeJniCalculator() {
-    System.loadLibrary("nativemath");
+    if (LOADED.compareAndSet(false, true)) {
+      System.loadLibrary("nativemath");
+    }
     jni = new NativeMathJni();
   }
 

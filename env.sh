@@ -1,5 +1,5 @@
 if [[ -z "${JAVA_17_HOME}" ]]; then
-    export JAVA_17_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
+    export JAVA_17_HOME=/opt/jdk-17.0.10+7
 fi
 
 if [[ -z "${JAVA_22_HOME}" ]]; then

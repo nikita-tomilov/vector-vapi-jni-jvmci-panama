@@ -2,11 +2,16 @@ package ru.ifmo.se.calculators;
 
 import ru.ifmo.se.panama.nativemath_h;
 import java.lang.foreign.MemorySegment;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NativePanamaCalculator implements Calculator {
 
+  private static final AtomicBoolean LOADED = new AtomicBoolean(false);
+
   public NativePanamaCalculator() {
-    System.loadLibrary("nativemath");
+    if (LOADED.compareAndSet(false, true)) {
+      System.loadLibrary("nativemath");
+    }
   }
 
   @Override

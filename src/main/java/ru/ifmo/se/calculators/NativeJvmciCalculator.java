@@ -1,42 +1,47 @@
 package ru.ifmo.se.calculators;
 
+import one.nalim.Link;
 import one.nalim.Linker;
-import ru.ifmo.se.jni.NativeMathJvmci;
 import static ru.ifmo.se.util.VectorUtil.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NativeJvmciCalculator implements Calculator {
 
+  private static final AtomicBoolean LOADED = new AtomicBoolean(false);
+
   public NativeJvmciCalculator() {
-    System.loadLibrary("nativemath");
-    Linker.loadLibrary("nativemath");
-    Linker.linkClass(NativeMathJvmci.class);
+    if (LOADED.compareAndSet(false, true)) {
+      System.loadLibrary("nativemath");
+      Linker.loadLibrary("nativemath");
+      Linker.linkClass(NativeJvmciCalculator.class);
+    }
   }
 
   @Override
   public float computeEuclideanDistance(final float[] a, final float[] b) {
-    return NativeMathJvmci.computeEuclideanDistance(a, a.length, b, b.length);
+    return computeEuclideanDistance(a, a.length, b, b.length);
   }
 
   @Override
   public float computeAngularDistance(final float[] a, final float[] b) {
-    return NativeMathJvmci.computeAngularDistance(a, a.length, b, b.length);
+    return computeAngularDistance(a, a.length, b, b.length);
   }
 
   @Override
   public float computeAverageValue(final float[] a) {
-    return NativeMathJvmci.computeAverageValue(a, a.length);
+    return computeAverageValue(a, a.length);
   }
 
   @Override
   public float computeDispersion(final float[] a) {
-    return NativeMathJvmci.computeDispersion(a, a.length);
+    return computeDispersion(a, a.length);
   }
 
   @Override
   public float[] computeAverageVector(final float[][] a) {
     float[] aa = flatten(a);
     float[] ans = new float[a[0].length];
-    NativeMathJvmci.computeAverageVectorN(aa, aa.length, a.length, a[0].length, ans);
+    computeAverageVectorN(aa, aa.length, a.length, a[0].length, ans);
     return ans;
   }
 
@@ -44,7 +49,7 @@ public class NativeJvmciCalculator implements Calculator {
   public float[] computeEuclideanDistances(final float[] a, final float[][] b) {
     float[] bb = flatten(b);
     float[] ans = new float[b.length];
-    NativeMathJvmci.computeEuclideanDistanceMultiN(a, a.length, bb, bb.length, ans);
+    computeEuclideanDistanceMultiN(a, a.length, bb, bb.length, ans);
     return ans;
   }
 
@@ -52,7 +57,7 @@ public class NativeJvmciCalculator implements Calculator {
   public float[] computeAngularDistances(final float[] a, final float[][] b) {
     float[] bb = flatten(b);
     float[] ans = new float[b.length];
-    NativeMathJvmci.computeAngularDistanceMultiN(a, a.length, bb, bb.length, ans);
+    computeAngularDistanceMultiN(a, a.length, bb, bb.length, ans);
     return ans;
   }
 
@@ -61,7 +66,7 @@ public class NativeJvmciCalculator implements Calculator {
     int n = a.length;
     float[] aa = flatten(a);
     float[] ans = new float[n * n];
-    NativeMathJvmci.computeEuclideanDistanceMatrixN(aa, aa.length, n, a[0].length, ans);
+    computeEuclideanDistanceMatrixN(aa, aa.length, n, a[0].length, ans);
     return deflatten(ans, n, n);
   }
 
@@ -70,7 +75,64 @@ public class NativeJvmciCalculator implements Calculator {
     int n = a.length;
     float[] aa = flatten(a);
     float[] ans = new float[n * n];
-    NativeMathJvmci.computeAngularDistanceMatrixN(aa, aa.length, n, a[0].length, ans);
+    computeAngularDistanceMatrixN(aa, aa.length, n, a[0].length, ans);
     return deflatten(ans, n, n);
   }
+
+  @Link
+  static native float computeAverageValue(float[] values, int size);
+
+  @Link
+  static native float computeEuclideanDistance(float[] p, int ps, float[] q, int qs);
+
+  @Link
+  static native float computeAngularDistance(float[] p, int ps, float[] q, int qs);
+
+  @Link
+  static native float computeDispersion(float[] values, int size);
+
+  @Link
+  static native void computeAverageVectorN(
+      float[] values,
+      int size,
+      int count,
+      int dim,
+      float[] ans
+  );
+
+  @Link
+  static native void computeEuclideanDistanceMultiN(
+      float[] a,
+      int aSize,
+      float[] b,
+      int bSize,
+      float[] ans
+  );
+
+  @Link
+  static native void computeAngularDistanceMultiN(
+      float[] a,
+      int aSize,
+      float[] b,
+      int bSize,
+      float[] ans
+  );
+
+  @Link
+  static native void computeEuclideanDistanceMatrixN(
+      float[] a,
+      int aSize,
+      int count,
+      int dim,
+      float[] ans
+  );
+
+  @Link
+  static native void computeAngularDistanceMatrixN(
+      float[] a,
+      int aSize,
+      int count,
+      int dim,
+      float[] ans
+  );
 }
