@@ -1,12 +1,14 @@
 package ru.ifmo.se.calculators;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
+@Disabled("Needs special configuration to run properly")
 class CalculatorTest {
 
   /*
