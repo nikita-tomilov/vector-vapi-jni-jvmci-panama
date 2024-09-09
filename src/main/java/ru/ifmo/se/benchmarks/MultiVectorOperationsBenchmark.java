@@ -12,7 +12,7 @@ import ru.ifmo.se.util.CalculatorFactory;
 import ru.ifmo.se.util.VectorUtil;
 
 @State(Scope.Benchmark)
-public class MultiArrayOperations {
+public class MultiVectorOperationsBenchmark {
 
   @Param("100")
   public String dimension = "";

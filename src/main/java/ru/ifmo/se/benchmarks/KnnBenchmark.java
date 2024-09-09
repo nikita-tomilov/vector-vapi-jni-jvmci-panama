@@ -8,14 +8,13 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.infra.Blackhole;
-import ru.ifmo.se.calculators.Calculator;
 import ru.ifmo.se.clusterizers.KnnClusterizer;
 import ru.ifmo.se.util.CalculatorFactory;
 import ru.ifmo.se.util.VectorUtil;
 import java.util.Arrays;
 
 @State(Scope.Benchmark)
-public class ComplexVectorOperations {
+public class KnnBenchmark {
 
   @Param("256")
   public String dimension = "";

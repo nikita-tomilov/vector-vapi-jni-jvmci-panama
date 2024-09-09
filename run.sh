@@ -3,30 +3,30 @@
 
 # JVMCI library Nalim does not work with JDK 22, downgrading to 17
 java17jvmci \
-      -DbenchmarksInclude=SingleArrayOperations \
+      -DbenchmarksInclude=SingleVectorOperationsBenchmark \
       -Dmode=AverageTime \
       -DtimeUnit=NANOSECONDS \
       -Dparamdimension=256,384,768 \
       -Dparamcalc=NativeJvmci \
-      -DresultName=SingleArrayOperations-JVMCI-JDK17 \
+      -DresultName=SingleVectorOperationsBenchmarkResults-JVMCI-JDK17 \
       -jar $BENCH17
 
 java17jvmci \
-      -DbenchmarksInclude=MultiArrayOperations \
+      -DbenchmarksInclude=MultiVectorOperationsBenchmark \
       -Dmode=AverageTime \
       -DtimeUnit=MICROSECONDS \
       -Dparamdimension=256,384,768 \
       -DparamvectorsCount=100,250,500 \
       -Dparamcalc=NativeJvmci \
-      -DresultName=MultiArrayOperations-JVMCI-JDK17 \
+      -DresultName=MultiVectorOperationsBenchmarkResults-JVMCI-JDK17 \
       -jar $BENCH17
 
 java17jvmci \
-      -DbenchmarksInclude=ComplexVectorOperations \
+      -DbenchmarksInclude=KnnBenchmark \
       -Dmode=AverageTime \
       -DtimeUnit=MILLISECONDS \
       -Dparamcalc=NativeJvmci \
-      -DresultName=ComplexVectorOperations-JDK17 \
+      -DresultName=KnnBenchmarkResults-JDK17 \
       -jar $BENCH17
 
 java17jvmci \
@@ -38,30 +38,30 @@ java17jvmci \
       -jar $BENCH17
 
 java22panama \
-      -DbenchmarksInclude=SingleArrayOperations \
+      -DbenchmarksInclude=SingleVectorOperationsBenchmark \
       -Dmode=AverageTime \
       -DtimeUnit=NANOSECONDS \
       -Dparamdimension=256,384,768 \
       -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
-      -DresultName=SingleArrayOperations-JDK22 \
+      -DresultName=SingleVectorOperationsBenchmarkResults-JDK22 \
       -jar $BENCH22
 
 java22panama \
-      -DbenchmarksInclude=MultiArrayOperations \
+      -DbenchmarksInclude=MultiVectorOperationsBenchmark \
       -Dmode=AverageTime \
       -DtimeUnit=MICROSECONDS \
       -Dparamdimension=256,384,768 \
       -DparamvectorsCount=100,250,500 \
       -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
-      -DresultName=MultiArrayOperations-JDK22 \
+      -DresultName=MultiVectorOperationsBenchmarkResults-JDK22 \
       -jar $BENCH22
 
 java22panama \
-     -DbenchmarksInclude=ComplexVectorOperations \
+     -DbenchmarksInclude=KnnBenchmark \
      -Dmode=AverageTime \
      -DtimeUnit=MILLISECONDS \
      -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
-     -DresultName=ComplexVectorOperations-JDK22 \
+     -DresultName=KnnBenchmarkResults-JDK22 \
      -jar $BENCH22
 
 java22panama \

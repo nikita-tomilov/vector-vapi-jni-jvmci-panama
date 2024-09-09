@@ -1,5 +1,6 @@
 package ru.ifmo.se.calculators;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import org.junit.jupiter.api.Test;
 import ru.ifmo.se.clusterizers.KnnClusterizer;
 import java.util.Arrays;
@@ -21,6 +22,6 @@ class KnnTest {
     final var knn = new KnnClusterizer(new PlainJavaCalculator());
     final var res = knn.knn(data, 3, 1000, false);
 
-    assert Arrays.stream(res).distinct().toArray().length == 3;
+    assertThat(Arrays.stream(res).distinct().boxed().toList()).hasSize(3);
   }
 }
