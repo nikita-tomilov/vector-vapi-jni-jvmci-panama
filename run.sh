@@ -29,6 +29,14 @@ java17jvmci \
       -DresultName=ComplexVectorOperations-JDK17 \
       -jar $BENCH17
 
+java17jvmci \
+      -DbenchmarksInclude=ProductQuantizationBenchmark \
+      -Dmode=AverageTime \
+      -DtimeUnit=SECONDS \
+      -Dparamcalc=NativeJvmci \
+      -DresultName=ProductQuantizationBenchmarkResults-JDK17 \
+      -jar $BENCH17
+
 java22panama \
       -DbenchmarksInclude=SingleArrayOperations \
       -Dmode=AverageTime \
@@ -54,4 +62,12 @@ java22panama \
      -DtimeUnit=MILLISECONDS \
      -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
      -DresultName=ComplexVectorOperations-JDK22 \
+     -jar $BENCH22
+
+java22panama \
+     -DbenchmarksInclude=ProductQuantizationBenchmark \
+     -Dmode=AverageTime \
+     -DtimeUnit=SECONDS \
+     -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
+     -DresultName=ProductQuantizationBenchmarkResults-JDK22 \
      -jar $BENCH22
