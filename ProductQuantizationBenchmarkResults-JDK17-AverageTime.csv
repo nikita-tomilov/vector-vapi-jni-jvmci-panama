@@ -1,0 +1,13 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: M","Param: NBits","Param: calc","Param: dimension","Param: distance","Param: vectorsCount"
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,5.617180,0.972391,"s/op",4,8,NativeJvmci,256,euc,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,6.444285,1.195675,"s/op",4,8,NativeJvmci,256,ang,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,14.167792,1.348779,"s/op",4,12,NativeJvmci,256,euc,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,16.997186,0.986420,"s/op",4,12,NativeJvmci,256,ang,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,101.897008,1.192347,"s/op",4,16,NativeJvmci,256,euc,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,109.072162,1.520864,"s/op",4,16,NativeJvmci,256,ang,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,8.161443,0.627671,"s/op",8,8,NativeJvmci,256,euc,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,10.168052,0.430701,"s/op",8,8,NativeJvmci,256,ang,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,19.940988,1.122347,"s/op",8,12,NativeJvmci,256,euc,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,25.472588,2.089017,"s/op",8,12,NativeJvmci,256,ang,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,87.841352,4.031265,"s/op",8,16,NativeJvmci,256,euc,10000
+"ru.ifmo.se.benchmarks.ProductQuantizationBenchmark.pq","avgt",1,10,122.888536,3.396513,"s/op",8,16,NativeJvmci,256,ang,10000

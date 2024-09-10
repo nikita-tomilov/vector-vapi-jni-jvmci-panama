@@ -1,0 +1,13 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: calc","Param: dimension"
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.angularDistance","avgt",1,10,40.015740,0.248857,"ns/op",NativeJvmci,256
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.angularDistance","avgt",1,10,46.523449,0.028205,"ns/op",NativeJvmci,384
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.angularDistance","avgt",1,10,65.454649,0.107461,"ns/op",NativeJvmci,768
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.averageValue","avgt",1,10,36.748945,0.057089,"ns/op",NativeJvmci,256
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.averageValue","avgt",1,10,43.812129,0.039293,"ns/op",NativeJvmci,384
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.averageValue","avgt",1,10,64.743970,0.066975,"ns/op",NativeJvmci,768
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.dispersion","avgt",1,10,65.699086,0.080747,"ns/op",NativeJvmci,256
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.dispersion","avgt",1,10,81.803460,0.484907,"ns/op",NativeJvmci,384
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.dispersion","avgt",1,10,131.336932,0.510939,"ns/op",NativeJvmci,768
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.euclidDistance","avgt",1,10,34.126952,0.046707,"ns/op",NativeJvmci,256
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.euclidDistance","avgt",1,10,40.721939,0.044263,"ns/op",NativeJvmci,384
+"ru.ifmo.se.benchmarks.SingleVectorOperationsBenchmark.euclidDistance","avgt",1,10,58.829269,0.157619,"ns/op",NativeJvmci,768
