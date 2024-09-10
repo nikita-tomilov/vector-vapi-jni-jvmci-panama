@@ -8,7 +8,7 @@ java17jvmci \
       -DtimeUnit=NANOSECONDS \
       -Dparamdimension=256,384,768 \
       -Dparamcalc=NativeJvmci \
-      -DresultName=SingleVectorOperationsBenchmarkResults-JVMCI-JDK17 \
+      -DresultName=SingleVectorOperationsBenchmarkResults-JDK17 \
       -jar $BENCH17
 
 java17jvmci \
@@ -18,7 +18,7 @@ java17jvmci \
       -Dparamdimension=256,384,768 \
       -DparamvectorsCount=100,250,500 \
       -Dparamcalc=NativeJvmci \
-      -DresultName=MultiVectorOperationsBenchmarkResults-JVMCI-JDK17 \
+      -DresultName=MultiVectorOperationsBenchmarkResults-JDK17 \
       -jar $BENCH17
 
 java17jvmci \
@@ -71,3 +71,5 @@ java22panama \
      -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
      -DresultName=ProductQuantizationBenchmarkResults-JDK22 \
      -jar $BENCH22
+
+systemctl suspend

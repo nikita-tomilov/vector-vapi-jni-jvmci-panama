@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 class CalculatorTest {
 
   /*
-    LD_LIBRARY_PATH=`pwd`/src/main/resources
+    LD_LIBRARY_PATH=`pwd`/src/main/resources/22
      --enable-native-access=ALL-UNNAMED --enable-preview --add-modules jdk.incubator.vector
    */
   final Calculator plainCalculator = new PlainJavaCalculator();

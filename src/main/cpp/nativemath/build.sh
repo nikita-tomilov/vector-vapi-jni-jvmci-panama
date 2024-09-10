@@ -18,9 +18,10 @@ cmake --build .
 cd ..
 
 # Moving the native library to the resources directory
-mkdir -p ../../resources/
-mv dist/libnativemath.so ../../resources/
+mkdir -p ../../resources/$JAVA_VER
+mv dist/libnativemath.so ../../resources/$JAVA_VER/
 rm -rf dist
+rm -rf $TMPDIR
 
 # Generating Panama bindings based on header file without "extern" declarations
 sed 's/extern.*$//g' nativemath.h > /tmp/nativemath.h
