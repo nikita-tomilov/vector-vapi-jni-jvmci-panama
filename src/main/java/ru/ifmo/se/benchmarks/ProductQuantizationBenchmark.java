@@ -8,7 +8,7 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.infra.Blackhole;
-import ru.ifmo.se.clusterizers.KnnClusterizer;
+import ru.ifmo.se.clusterizers.KmeansClusterizer;
 import ru.ifmo.se.clusterizers.ProductQuantization;
 import ru.ifmo.se.util.CalculatorFactory;
 import ru.ifmo.se.util.VectorUtil;
@@ -48,7 +48,7 @@ public class ProductQuantizationBenchmark {
     nBits = Integer.parseInt(NBits);
     useAngularDistance = distance.equals("ang");
     var calculator = CalculatorFactory.get(calc);
-    var clusterizer = new KnnClusterizer(calculator);
+    var clusterizer = new KmeansClusterizer(calculator);
     pq = new ProductQuantization(clusterizer);
   }
 

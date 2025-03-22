@@ -22,11 +22,11 @@ java17jvmci \
       -jar $BENCH17
 
 java17jvmci \
-      -DbenchmarksInclude=KnnBenchmark \
+      -DbenchmarksInclude=KmeansBenchmark \
       -Dmode=AverageTime \
       -DtimeUnit=MILLISECONDS \
       -Dparamcalc=NativeJvmci \
-      -DresultName=KnnBenchmarkResults-JDK17 \
+      -DresultName=KmeansBenchmarkResults-JDK17 \
       -jar $BENCH17
 
 java17jvmci \
@@ -57,11 +57,11 @@ java22panama \
       -jar $BENCH22
 
 java22panama \
-     -DbenchmarksInclude=KnnBenchmark \
+     -DbenchmarksInclude=KmeansBenchmark \
      -Dmode=AverageTime \
      -DtimeUnit=MILLISECONDS \
      -Dparamcalc=PlainJava,VectorApi,NativeJni,NativePanama \
-     -DresultName=KnnBenchmarkResults-JDK22 \
+     -DresultName=KmeansBenchmarkResults-JDK22 \
      -jar $BENCH22
 
 java22panama \

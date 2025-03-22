@@ -8,17 +8,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class KnnClusterizer {
+public class KmeansClusterizer {
 
   private final Calculator calculator;
 
   private final Random random = new Random(42);
 
-  public KnnClusterizer(final Calculator calculator) {
+  public KmeansClusterizer(final Calculator calculator) {
     this.calculator = calculator;
   }
 
-  public int[] knn(
+  public int[] kmeans(
       final float[][] data,
       final int k,
       final int maxIterations,

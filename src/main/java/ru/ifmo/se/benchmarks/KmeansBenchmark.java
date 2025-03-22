@@ -8,13 +8,13 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.infra.Blackhole;
-import ru.ifmo.se.clusterizers.KnnClusterizer;
+import ru.ifmo.se.clusterizers.KmeansClusterizer;
 import ru.ifmo.se.util.CalculatorFactory;
 import ru.ifmo.se.util.VectorUtil;
 import java.util.Arrays;
 
 @State(Scope.Benchmark)
-public class KnnBenchmark {
+public class KmeansBenchmark {
 
   @Param("256")
   public String dimension = "";
@@ -34,7 +34,7 @@ public class KnnBenchmark {
   public float[][] data;
   public int k;
   public boolean useAngularDistance;
-  public KnnClusterizer clusterizer;
+  public KmeansClusterizer clusterizer;
   public int[] ans;
 
   @Setup(Level.Invocation)
@@ -43,12 +43,12 @@ public class KnnBenchmark {
     k = Integer.parseInt(K);
     useAngularDistance = distance.equals("ang");
     var calculator = CalculatorFactory.get(calc);
-    clusterizer = new KnnClusterizer(calculator);
+    clusterizer = new KmeansClusterizer(calculator);
   }
 
   @Benchmark
-  public void knn(final Blackhole blackhole) {
-    ans = clusterizer.knn(data, k, 10000, useAngularDistance);
+  public void kmeans(final Blackhole blackhole) {
+    ans = clusterizer.kmeans(data, k, 10000, useAngularDistance);
     blackhole.consume(ans);
   }
 

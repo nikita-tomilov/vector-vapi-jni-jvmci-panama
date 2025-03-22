@@ -2,18 +2,18 @@ package ru.ifmo.se.calculators;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.Test;
-import ru.ifmo.se.clusterizers.KnnClusterizer;
+import ru.ifmo.se.clusterizers.KmeansClusterizer;
 import ru.ifmo.se.clusterizers.ProductQuantization;
 import static ru.ifmo.se.util.VectorUtil.generateRandomMatrix;
 
 class PqTest {
 
   @Test
-  void knnWorks() {
+  void kmeansWorks() {
     final var data = generateRandomMatrix("16", "100");
 
-    final var knn = new KnnClusterizer(new PlainJavaCalculator());
-    final var pq = new ProductQuantization(knn);
+    final var kmeansClusterizer = new KmeansClusterizer(new PlainJavaCalculator());
+    final var pq = new ProductQuantization(kmeansClusterizer);
     final var res = pq.quantize(data, 4, 4, false);
 
     assertThat(res).hasDimensions(100, 4);

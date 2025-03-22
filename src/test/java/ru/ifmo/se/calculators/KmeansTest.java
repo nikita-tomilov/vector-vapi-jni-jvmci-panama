@@ -2,14 +2,14 @@ package ru.ifmo.se.calculators;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import org.junit.jupiter.api.Test;
-import ru.ifmo.se.clusterizers.KnnClusterizer;
+import ru.ifmo.se.clusterizers.KmeansClusterizer;
 import java.util.Arrays;
 import java.util.List;
 
-class KnnTest {
+class KmeansTest {
 
   @Test
-  void knnWorks() {
+  void kmeansWorks() {
     final var data = List.of(
         new float[]{0.0f, 0.0f, 5.0f},
         new float[]{0.0f, 0.0f, 4.0f},
@@ -19,8 +19,8 @@ class KnnTest {
         new float[]{15.0f, 15.0f, 15.0f}
     ).toArray(new float[0][]);
 
-    final var knn = new KnnClusterizer(new PlainJavaCalculator());
-    final var res = knn.knn(data, 3, 1000, false);
+    final var kmeans = new KmeansClusterizer(new PlainJavaCalculator());
+    final var res = kmeans.kmeans(data, 3, 1000, false);
 
     assertThat(Arrays.stream(res).distinct().boxed().toList()).hasSize(3);
   }

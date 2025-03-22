@@ -1,13 +1,13 @@
 "Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: K","Param: calc","Param: dimension","Param: distance","Param: vectorsCount"
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,21.224542,0.728991,"ms/op",20,NativeJvmci,256,euc,1000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,337.687071,39.529682,"ms/op",20,NativeJvmci,256,euc,5000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,1113.457335,262.354954,"ms/op",20,NativeJvmci,256,euc,10000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,22.404275,1.023335,"ms/op",20,NativeJvmci,256,ang,1000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,346.240237,40.588263,"ms/op",20,NativeJvmci,256,ang,5000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,1218.848540,407.684438,"ms/op",20,NativeJvmci,256,ang,10000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,27.309053,1.200720,"ms/op",50,NativeJvmci,256,euc,1000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,511.064068,72.221336,"ms/op",50,NativeJvmci,256,euc,5000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,1391.799096,302.185817,"ms/op",50,NativeJvmci,256,euc,10000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,29.921133,1.135251,"ms/op",50,NativeJvmci,256,ang,1000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,532.442137,83.945067,"ms/op",50,NativeJvmci,256,ang,5000
-"ru.ifmo.se.benchmarks.KnnBenchmark.knn","avgt",1,10,1563.361813,273.770599,"ms/op",50,NativeJvmci,256,ang,10000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,21.224542,0.728991,"ms/op",20,NativeJvmci,256,euc,1000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,337.687071,39.529682,"ms/op",20,NativeJvmci,256,euc,5000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,1113.457335,262.354954,"ms/op",20,NativeJvmci,256,euc,10000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,22.404275,1.023335,"ms/op",20,NativeJvmci,256,ang,1000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,346.240237,40.588263,"ms/op",20,NativeJvmci,256,ang,5000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,1218.848540,407.684438,"ms/op",20,NativeJvmci,256,ang,10000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,27.309053,1.200720,"ms/op",50,NativeJvmci,256,euc,1000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,511.064068,72.221336,"ms/op",50,NativeJvmci,256,euc,5000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,1391.799096,302.185817,"ms/op",50,NativeJvmci,256,euc,10000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,29.921133,1.135251,"ms/op",50,NativeJvmci,256,ang,1000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,532.442137,83.945067,"ms/op",50,NativeJvmci,256,ang,5000
+"ru.ifmo.se.benchmarks.KmeansBenchmark.kmeans","avgt",1,10,1563.361813,273.770599,"ms/op",50,NativeJvmci,256,ang,10000

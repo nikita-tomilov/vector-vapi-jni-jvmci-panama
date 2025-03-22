@@ -6,9 +6,9 @@ import java.util.List;
 
 public class ProductQuantization {
 
-  private final KnnClusterizer clusterizer;
+  private final KmeansClusterizer clusterizer;
 
-  public ProductQuantization(final KnnClusterizer clusterizer) {
+  public ProductQuantization(final KmeansClusterizer clusterizer) {
     this.clusterizer = clusterizer;
   }
 
@@ -43,7 +43,7 @@ public class ProductQuantization {
     // Clusterize the subvectors
     List<int[]> clusters = new ArrayList<>();
     for (float[][] subvec : subvecs) {
-      clusters.add(clusterizer.knn(subvec, clustersCount, -1, useAngularDistance));
+      clusters.add(clusterizer.kmeans(subvec, clustersCount, -1, useAngularDistance));
     }
 
     // Create result array
